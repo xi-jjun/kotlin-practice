@@ -12,6 +12,7 @@ repositories {
 }
 
 dependencies {
+    testImplementation("org.assertj:assertj-core:3.18.0")
     testImplementation(kotlin("test"))
 }
 
