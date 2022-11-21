@@ -1,7 +1,11 @@
 package me.practice.kotlinspring.controller
 
 import me.practice.kotlinspring.controller.dto.UserRequest
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api")
@@ -19,15 +23,12 @@ class GetApiController {
     }
 
     @GetMapping("/query-param")
-    fun queryParam(
-        @RequestParam(value = "user") user: String,
+    fun requestQueryParamByParameters(
+        @RequestParam(value = "name") user: String,
         @RequestParam(value = "age") age: Int,
-        @RequestParam(name = "nickname") nickname: String
-    ): String {
-        return "$user info : {\n" +
-                "\tuser name : $user\n" +
-                "\tuser age : $age\n" +
-                "\tuser nickname : $nickname\n}"
+        @RequestParam(name = "address") address: String
+    ): UserRequest {
+        return UserRequest(user, age, address)
     }
 
     /**
@@ -37,7 +38,7 @@ class GetApiController {
      * @RestController 를 쓰면 object 의 경우는 자동으로 json format 으로 변형되어 반환이 된다.
      */
     @GetMapping("/query-param-dto")
-    fun getUser(userRequest: UserRequest): UserRequest {
+    fun requestQueryParamByDataClass(userRequest: UserRequest): UserRequest {
         return userRequest
     }
 
@@ -46,7 +47,7 @@ class GetApiController {
     주의 : @RequestParam 붙여줘야 한다.
      */
     @GetMapping("/query-param-map")
-    fun getMapUser(@RequestParam map: Map<String, Any>): Map<String, Any> {
+    fun requestQueryParamByMap(@RequestParam map: Map<String, Any>): Map<String, Any> {
         return map
     }
 }
