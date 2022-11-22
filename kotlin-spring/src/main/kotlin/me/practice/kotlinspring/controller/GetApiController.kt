@@ -1,7 +1,7 @@
 package me.practice.kotlinspring.controller
 
-import me.practice.kotlinspring.controller.dto.GreetingResponseDto
-import me.practice.kotlinspring.controller.dto.UserRequest
+import me.practice.kotlinspring.controller.dto.response.GreetingResponseDto
+import me.practice.kotlinspring.controller.dto.request.UserRequest
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
