@@ -1,5 +1,6 @@
 package me.practice.kotlinspring.controller
 
+import me.practice.kotlinspring.controller.dto.GreetingResponseDto
 import me.practice.kotlinspring.controller.dto.UserRequest
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -17,9 +18,9 @@ class GetApiController {
     }
 
     @GetMapping("/greeting/{userName}")
-    fun greetingUser(@PathVariable("userName") _userName: String): String {
-        val userName = _userName
-        return "Hello, $userName!"
+    fun greetingUser(@PathVariable("userName") _userName: String): GreetingResponseDto {
+        val userName = GreetingResponseDto("Hello, $_userName")
+        return userName
     }
 
     @GetMapping("/query-param")
